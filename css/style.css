@@ -144,7 +144,7 @@ button:focus {
     outline: none;
 }
 
-i {
+ion-icon {
     color: forestgreen;
     display: inline-block;
     margin-right: 15px;
