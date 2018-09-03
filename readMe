@@ -1,0 +1,14 @@
+I) GAME RULES:
+
+- The game has 2 players, playing in rounds
+- In each turn, a player rolls a dice as many times as he whishes. Each result get added to his ROUND score
+- BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn
+- The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn
+- The first player to reach 100 points on GLOBAL score wins the game
+
+II) GAMEPLAY:
+
+- 'SPACE BAR' to focus on FINAL SCORE box to change the maximum score that player can reach to win the game. Leave it empty by default will be 100
+- 'ENTER' or Start button to start the new game with the input Final Score
+- 'UP' or ROLL button to roll a dice/dices
+- 'DOWN'or HOLD button to hold your current score, add it to Total score, then leave the turn to other player

@@ -136,7 +136,7 @@ button:hover {
     font-weight: 700;
 }
 
-button:hover i {
+button:hover ion-icon {
     margin-right: 20px;
 }
 
@@ -156,7 +156,7 @@ ion-icon {
 }
 
 .btn-new {
-    top: 45px;
+    top: 55px;
 }
 
 .btn-roll {
@@ -183,4 +183,55 @@ ion-icon {
 .winner .player-name {
     font-weight: bold;
     color: forestgreen;
+}
+
+.final-score {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5px;
+    color: #555;
+    font-size: 18px;
+    font-family: 'Lato';
+    text-align: center;
+    padding: 5px;
+    width: 140px;
+    text-transform: uppercase;
+    border-color: forestgreen;
+    border-style: solid;
+}
+
+.final-score:focus { outline: none; }
+
+.btn-setting {
+    left: 100%;
+    transform: translate(-55%, 25%);
+}
+
+.btn-info {
+    left: 100%;
+    top: 10%;
+    transform: translate(-55%, 25%);
+} 
+
+.final-score-icon {
+    position: absolute;
+    top: 6px;
+    color: darkred;
+}
+
+.final-score-label {
+    font-size: 22px;
+    font-weight: bold;
+    color: darkred;
+    background: none;
+    position: absolute;
+    left: 25px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
