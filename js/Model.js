@@ -24,6 +24,7 @@ var DiceModel = (function () {
         gamePlaying: true,
         finalScore: 100,
         gameMode: GameMode.Normal,
+        displayHoldBtn: true,
     };
 
     return {
@@ -118,6 +119,14 @@ var DiceModel = (function () {
 
         setNewFinalScore: function (newFinalScore) {
             data.finalScore = newFinalScore;
+        },
+
+        setDisplayHoldBtnStatus: function (newStatus) {
+            data.displayHoldBtn = newStatus;
+        },
+
+        getDisplayHoldBtnStatus: function () {
+            return data.displayHoldBtn;
         },
     };
 

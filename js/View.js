@@ -17,6 +17,7 @@ var DiceView = (function () {
         infoBtn: '.btn-info',
         confirm_dialog_button: '.confirm_dialog_button',
         select_dialog: '.select_dialog',
+        X_icon: '.X-icon',
         //ID
         player: 'name-',
         score: 'score-',
@@ -110,6 +111,19 @@ var DiceView = (function () {
             document.querySelector(DOMstrings.dice_2).style.display = "none";
         },
 
+        hideHoldBtn: function () {
+            document.querySelector(DOMstrings.holdBtn).style.visibility = "hidden";
+            document.querySelector(DOMstrings.X_icon).style.visibility = "visible";
+            return false;
+        },
+
+        displayHoldbtn: function () {
+            document.querySelector(DOMstrings.holdBtn).style.visibility = "visible";
+            document.querySelector(DOMstrings.X_icon).style.visibility = "hidden";
+            return true;
+        },
+
+
         //Clear all visiable UI
         clearAllUI: function () {
             var listOfUI, fields, fieldsArr;
@@ -127,6 +141,7 @@ var DiceView = (function () {
             document.querySelector(DOMstrings.player1).textContent = "Player 1";
             document.querySelector(DOMstrings.player2).textContent = "Player 2";
             this.hideTheDice();
+            this.displayHoldbtn();
 
             document.querySelector(DOMstrings.player1Panel).classList.remove(DOMstrings.winner);
             document.querySelector(DOMstrings.player2Panel).classList.remove(DOMstrings.winner);

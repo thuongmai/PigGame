@@ -175,6 +175,13 @@ ion-icon {
     top: 467px;
 }
 
+.X-icon {
+    position: absolute;
+    top: 467px;
+    left: 50%;
+    transform: translate(-35%);
+}
+
 .dice {
     position: absolute;
     left: 50%;
@@ -281,11 +288,6 @@ button:hover .info-icon {
     color: forestgreen;
 }
 
-.settingPanel {
-    position: absolute;
-    left: 50%;
-}
-
 #settingDialog {
     left: 50%;
     transform: translate(-50%);
@@ -304,11 +306,12 @@ button:hover .info-icon {
 }
 
 select {
-    color:forestgreen;
+    color: forestgreen;
     transform: translate(0%, -10%)
 }
+
 option {
-    color:forestgreen;
+    color: forestgreen;
 }
 
 input::-webkit-outer-spin-button,

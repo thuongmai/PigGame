@@ -121,13 +121,14 @@ var DiceController = (function (Model, View) {
 
     var ctrlRollDice = function () {
         var dice, dices, currentScore;
-        console.log("Before checking game play");
+
         if (Model.isGamePlaying()) {
-            console.log("The game is playing");
+
             if (Model.getCurrentGameMode() == Model.isGameMode().Normal) {
-                console.log("The Mode game is Normal");
+
                 //1. Update the dice
                 dice = updateDice();
+
                 //2. If dice is not 1, add to currentScore and update
                 if (dice !== 1) {
                     updateCurrentScore(dice);
@@ -141,9 +142,14 @@ var DiceController = (function (Model, View) {
                     }, 1000);
                 }
             } else if (Model.getCurrentGameMode() == Model.isGameMode().TwoDicePig) {
-                console.log('The Mode game is Two-dice Pig');
+
+                //0. Enable the Hold Button that disable from the case 4
+                if (Model.getDisplayHoldBtnStatus() == false)
+                    Model.setDisplayHoldBtnStatus(View.displayHoldbtn());
+
                 //1. Update the dice
                 dices = updateDices();
+
                 //2. if two 1s are rolled, the player's entire score is lost, and turn ends
                 if (dices[0] === 1 && dices[1] === 1) {
                     Model.disableTheGame();
@@ -154,6 +160,7 @@ var DiceController = (function (Model, View) {
                         ctrlHoldBtn();
                     }, 1000);
                 }
+
                 //3. if a single 1 is rolled, the player scores nothing and turns end
                 else if (dices[0] === 1 || dices[1] === 1) {
                     //Disable the Roll and Hold button for 1 second to let player see the dice number 1
@@ -164,18 +171,29 @@ var DiceController = (function (Model, View) {
                         ctrlHoldBtn();
                     }, 1000);
                 }
+
                 //4. If two dices are the same, score is added to total, the player has to roll again (can't hold)
-                else if (dices[0] === dices[1]) {
+                else if (dices[0] === dices[1] && dices[0] !== 1) {
                     //Disable the HOLD (DOWN) button
+                    Model.setDisplayHoldBtnStatus(View.hideHoldBtn());
+                    //Update the current scores with new dices
+                    updateCurrentScore(dices);
+                    //Update the Total score
+                    updateTotalScore();
+                    //Clear current score of this player
+                    clearCurrentScore();
                 }
-                //2. Update currentScore
-                updateCurrentScore(dices);
+
+                //5. Update currentScore
+                else {
+                    updateCurrentScore(dices);
+                }
             }
         }
     };
 
     var ctrlHoldBtn = function () {
-        if (Model.isGamePlaying()) {
+        if (Model.isGamePlaying() && Model.getDisplayHoldBtnStatus() === true) {
             //1. Update Total Score
             updateTotalScore();
             //3. Hide the dice
