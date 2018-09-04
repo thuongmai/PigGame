@@ -144,22 +144,22 @@ var DiceController = (function (Model, View) {
                 console.log('The Mode game is Two-dice Pig');
                 //1. Update the dice
                 dices = updateDices();
-                //2. if a single 1 is rolled, the player scores nothing and turns end
-                if (dices[0] === 1 || dices[1] === 1) {
-                    //Disable the Roll and Hold button for 1 second to let player see the dice number 1
-                    Model.disableTheGame();
-                    setTimeout(function () {
-                        clearCurrentScore();
-                        Model.activateTheGame();
-                        ctrlHoldBtn();
-                    }, 1000);
-                }
-                //3. if two 1s are rolled, the player's entire score is lost, and turn ends
-                else if (dices[0] === 1 && dices[1] === 1) {
+                //2. if two 1s are rolled, the player's entire score is lost, and turn ends
+                if (dices[0] === 1 && dices[1] === 1) {
                     Model.disableTheGame();
                     setTimeout(function () {
                         clearCurrentScore();
                         clearTotalScore();
+                        Model.activateTheGame();
+                        ctrlHoldBtn();
+                    }, 1000);
+                }
+                //3. if a single 1 is rolled, the player scores nothing and turns end
+                else if (dices[0] === 1 || dices[1] === 1) {
+                    //Disable the Roll and Hold button for 1 second to let player see the dice number 1
+                    Model.disableTheGame();
+                    setTimeout(function () {
+                        clearCurrentScore();
                         Model.activateTheGame();
                         ctrlHoldBtn();
                     }, 1000);
