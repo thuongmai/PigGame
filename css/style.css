@@ -136,7 +136,15 @@ button:hover {
     font-weight: 700;
 }
 
-button:hover ion-icon {
+button:hover .new-icon {
+    margin-right: 20px;
+}
+
+button:hover .hold-icon {
+    margin-right: 20px;
+}
+
+button:hover .roll-icon {
     margin-right: 20px;
 }
 
@@ -176,6 +184,24 @@ ion-icon {
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
 }
 
+.dice-1 {
+    position: absolute;
+    left: 50%;
+    top: 140px;
+    transform: translateX(-50%);
+    height: 100px;
+    box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+}
+
+.dice-2 {
+    position: absolute;
+    left: 50%;
+    top: 270px;
+    transform: translateX(-50%);
+    height: 100px;
+    box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+}
+
 .winner {
     background-color: #f5f5f5;
 }
@@ -201,23 +227,31 @@ ion-icon {
     border-style: solid;
 }
 
-.final-score:focus { outline: none; }
+.final-score:focus {
+    outline: none;
+}
 
 .btn-setting {
-    left: 100%;
+    top: 5%;
+    left: 3%;
     transform: translate(-55%, 25%);
+    color: darkred;
+    text-transform: uppercase;
 }
 
 .btn-info {
-    left: 100%;
     top: 10%;
+    left: 3%;
     transform: translate(-55%, 25%);
-} 
+    color: darkred;
+    text-transform: uppercase;
+}
 
 .final-score-icon {
     position: absolute;
     top: 6px;
     color: darkred;
+    font-size: 24px;
 }
 
 .final-score-label {
@@ -229,9 +263,58 @@ ion-icon {
     left: 25px;
 }
 
+.setting-icon {
+    font-size: 24px;
+    color: darkred;
+}
+
+.info-icon {
+    font-size: 24px;
+    color: darkred;
+}
+
+button:hover .setting-icon {
+    color: forestgreen;
+}
+
+button:hover .info-icon {
+    color: forestgreen;
+}
+
+.settingPanel {
+    position: absolute;
+    left: 50%;
+}
+
+#settingDialog {
+    left: 50%;
+    transform: translate(-50%);
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+    margin: 10px;
+    font-size: 18px;
+    color: forestgreen;
+}
+
+.confirm_dialog_button {
+    position: relative;
+    color: darkred;
+    padding-top: 5px;
+}
+
+select {
+    color:forestgreen;
+    transform: translate(0%, -10%)
+}
+option {
+    color:forestgreen;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
 }

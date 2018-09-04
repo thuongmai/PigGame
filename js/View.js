@@ -9,12 +9,19 @@ var DiceView = (function () {
         rollBtn: '.btn-roll',
         holdBtn: '.btn-hold',
         dice: '.dice',
+        dice_1: '.dice-1',
+        dice_2: '.dice-2',
         final_score: '.final-score',
         final_score_label: '.final-score-label',
+        settingBtn: '.btn-setting',
+        infoBtn: '.btn-info',
+        confirm_dialog_button: '.confirm_dialog_button',
+        select_dialog: '.select_dialog',
         //ID
         player: 'name-',
         score: 'score-',
         current: 'current-',
+        settingDialog: 'settingDialog',
 
         player1: '#name-0',
         score1: '#score-0',
@@ -42,6 +49,18 @@ var DiceView = (function () {
             diceDOM.src = './img/dice-' + dice + '.png';
         },
 
+        //Update two dice UI
+        displayDices: function (dices) {
+            var diceDOM_1, diceDOM_2;
+            diceDOM_1 = document.querySelector(DOMstrings.dice_1);
+            diceDOM_1.style.display = 'block';
+            diceDOM_1.src = './img/dice-' + dices[0] + '.png';
+
+            diceDOM_2 = document.querySelector(DOMstrings.dice_2);
+            diceDOM_2.style.display = 'block';
+            diceDOM_2.src = './img/dice-' + dices[1] + '.png';
+        },
+
         //Update the current score UI to the right player
         displayCurrentScore: function (currentScore, playerIndex) {
             document.getElementById(DOMstrings.current + playerIndex).textContent = currentScore;
@@ -55,6 +74,10 @@ var DiceView = (function () {
         displayTotalScore: function (totalScore, playerIndex) {
             document.getElementById(DOMstrings.score + playerIndex).textContent = totalScore;
             document.getElementById(DOMstrings.current + playerIndex).textContent = 0;
+        },
+
+        displayClearTotalScore: function (playerIndex) {
+            document.getElementById(DOMstrings.score + playerIndex).textContent = 0;
         },
 
         displayNextActivePlayer: function (activePlayer) {
@@ -83,8 +106,10 @@ var DiceView = (function () {
 
         hideTheDice: function () {
             document.querySelector(DOMstrings.dice).style.display = "none";
+            document.querySelector(DOMstrings.dice_1).style.display = "none";
+            document.querySelector(DOMstrings.dice_2).style.display = "none";
         },
-        
+
         //Clear all visiable UI
         clearAllUI: function () {
             var listOfUI, fields, fieldsArr;
@@ -102,7 +127,7 @@ var DiceView = (function () {
             document.querySelector(DOMstrings.player1).textContent = "Player 1";
             document.querySelector(DOMstrings.player2).textContent = "Player 2";
             this.hideTheDice();
-            
+
             document.querySelector(DOMstrings.player1Panel).classList.remove(DOMstrings.winner);
             document.querySelector(DOMstrings.player2Panel).classList.remove(DOMstrings.winner);
             document.querySelector(DOMstrings.player1Panel).classList.remove(DOMstrings.active);

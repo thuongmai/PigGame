@@ -9,12 +9,21 @@ var DiceModel = (function () {
     };
     Object.freeze(Player);
 
+    var GameMode = {
+        "Normal": 0,
+        "TwoDicePig": 1,
+        "BigPig": 2,
+        "Skunk": 3,
+    };
+    Object.freeze(GameMode);
+
     var data = {
         currentScore: [0, 0],
         totalScore: [0, 0],
         currentPlayer: Player["Player 1"],
         gamePlaying: true,
-        finalScore: 100
+        finalScore: 100,
+        gameMode: GameMode.Normal,
     };
 
     return {
@@ -23,9 +32,19 @@ var DiceModel = (function () {
             return dice;
         },
 
-        //Add roll dice to current score
+        randomizeDices: function () {
+            var dice_1, dice_2;
+            dice_1 = this.randomizeDice();
+            dice_2 = this.randomizeDice();
+            return [dice_1, dice_2];
+        },
+
+        //Add roll dice (or dices) to current score
         addScoreToCurrent: function (dice) {
-            data.currentScore[data.currentPlayer] += dice;
+            if (dice instanceof Array) //if dice is an array, it contains two dices
+                data.currentScore[data.currentPlayer] += dice[0] + dice[1];
+            else
+                data.currentScore[data.currentPlayer] += dice;
             return data.currentScore[data.currentPlayer];
         },
 
@@ -69,9 +88,25 @@ var DiceModel = (function () {
             return data.currentPlayer;
         },
 
+        getCurrentGameMode: function () {
+            return data.gameMode;
+        },
+
+        isGameMode: function () {
+            return GameMode;
+        },
+
+        setNewGameMode: function (newGameMode) {
+            data.gameMode = newGameMode;
+        },
+
         clearCurrentScoreData: function () {
             data.currentScore[Player["Player 1"]] = 0;
             data.currentScore[Player["Player 2"]] = 0;
+        },
+
+        clearTotalScoreOfCurrentPlayer: function () {
+            data.totalScore[data.currentPlayer] = 0;
         },
 
         clearAllData: function () {
