@@ -72,9 +72,10 @@ var DiceView = (function () {
         },
 
         //Update the Total score UI to the right player, then clear the current score UI
-        displayTotalScore: function (totalScore, playerIndex) {
+        displayTotalScore: function (totalScore, playerIndex, isClearNeeded = false) {
             document.getElementById(DOMstrings.score + playerIndex).textContent = totalScore;
-            document.getElementById(DOMstrings.current + playerIndex).textContent = 0;
+            if (isClearNeeded)
+                document.getElementById(DOMstrings.current + playerIndex).textContent = 0;
         },
 
         displayClearTotalScore: function (playerIndex) {

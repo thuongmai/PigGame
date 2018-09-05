@@ -3,6 +3,10 @@
  */
 var DiceController = (function (Model, View) {
 
+    /************************************************************************
+     ***************** SETUP ALL EVENT LISTENERS FOR BUTTONS ****************
+     ************************************************************************/
+
     var setupEventListeners = function () {
         var DOM = View.getDOMstrings();
 
@@ -69,6 +73,127 @@ var DiceController = (function (Model, View) {
 
     };
 
+    /*****************************************************************************
+     ***************** ALL CONTROL FUNCTIONS FOR BUTTON LISTENERS ****************
+     *****************************************************************************/
+
+    var ctrlRollDice = function () {
+
+        if (Model.isGamePlaying()) {
+
+            if (Model.getCurrentGameMode() == Model.isGameMode().Normal) {
+                activateGameNormal();
+
+            } else if (Model.getCurrentGameMode() == Model.isGameMode().TwoDicePig) {
+                activateGameTwoDices();
+            } else if (Model.getCurrentGameMode() == Model.isGameMode().BigPig) {
+                activateGameTwoDices(true);
+            }
+        }
+    };
+
+    var ctrlHoldBtn = function () {
+        if (Model.isGamePlaying() && Model.getDisplayHoldBtnStatus() === true) {
+            //1. Update Total Score
+            updateTotalScore();
+            //2. Clear the current score
+            clearCurrentScore();
+            //3. Hide the dice
+            View.hideTheDice();
+            //4. if Player not yet wins the game, switch to next player and active the next UI
+            if (Model.isPlayerWinGame()) { //Set current player to be a winner, freeze the game
+                View.displayWinner(Model.currentPlayer());
+            } else { //switch to next player
+                updateNextPlayer();
+            }
+        }
+    };
+
+    /*********************************************************
+     ***************** GAME MODE STYLE DETAIL ****************
+     *********************************************************/
+
+    var activateGameNormal = function () {
+        var dice, currentScore;
+        //1. Update the dice
+        dice = updateDice();
+
+        //2. If dice is not 1, add to currentScore and update
+        if (dice !== 1) {
+            updateCurrentScore(dice);
+        } else { //clear currentScore and switch to next player
+            //Disable the Roll and Hold button for 1 second to let player see the dice number 1
+            Model.disableTheGame();
+            setTimeout(function () {
+                Model.activateTheGame();
+                clearCurrentScore();
+                ctrlHoldBtn();
+            }, 1000);
+        }
+    }
+
+    var activateGameTwoDices = function (isBigPig = false) {
+        var dices, currentScore;
+        //0. Enable the Hold Button that disable from the case 4
+        if (Model.getDisplayHoldBtnStatus() == false)
+            Model.setDisplayHoldBtnStatus(View.displayHoldbtn());
+
+        //1. Update the dice
+        dices = updateDices();
+
+        //2. if two 1s are rolled, the player's entire score is lost, and turn ends
+        if (dices[0] === 1 && dices[1] === 1) {
+            if (!isBigPig) {
+                Model.disableTheGame();
+                setTimeout(function () {
+                    clearCurrentScore();
+                    clearTotalScore();
+                    Model.activateTheGame();
+                    ctrlHoldBtn();
+                }, 1000);
+            } else { //If two 1s are rolled, the player adds 25 to the turn total
+                updateCurrentScore(25);
+            }
+        }
+
+        //3. if a single 1 is rolled, the player scores nothing and turns end
+        else if (dices[0] === 1 || dices[1] === 1) {
+            //Disable the Roll and Hold button for 1 second to let player see the dice number 1
+            Model.disableTheGame();
+            setTimeout(function () {
+                clearCurrentScore();
+                Model.activateTheGame();
+                ctrlHoldBtn();
+            }, 1000);
+        }
+
+        //4. If two dices are the same, score is added to total, the player has to roll again (can't hold)
+        else if (dices[0] === dices[1] && dices[0] !== 1) {
+            if (isBigPig) { //If the game mode is big Pig, the player adds twice the value of the dice to turn total
+                dices[0] *= 2;
+                dices[1] *= 2;
+            }
+            //Disable the HOLD (DOWN) button
+            Model.setDisplayHoldBtnStatus(View.hideHoldBtn());
+            //Update the current scores with new dices
+            updateCurrentScore(dices);
+            //Update the Total score
+            //updateTotalScore();
+            //Clear current score of this player
+            //clearCurrentScore();
+        }
+
+        //5. Update currentScore
+        else {
+            updateCurrentScore(dices);
+        }
+    }
+
+
+    /*****************************************************************************
+     ***************** ALL UPDATE FUNCTION (BOTH MODEL AND VIEW) *****************
+     *****************************************************************************/
+
     var updateDice = function () {
         var dice;
         //1. Randomize the dice
@@ -88,8 +213,10 @@ var DiceController = (function (Model, View) {
     };
 
     var updateCurrentScore = function (dice) {
+        var currentScore;
         //Add dice number to current score
         currentScore = Model.addScoreToCurrent(dice);
+        console.log(currentScore);
         //Update the UI current
         View.displayCurrentScore(currentScore, Model.currentPlayer());
     };
@@ -97,11 +224,6 @@ var DiceController = (function (Model, View) {
     var clearCurrentScore = function () {
         Model.clearCurrentScoreData();
         View.displayClearCurrentScore(Model.currentPlayer());
-    };
-
-    var clearTotalScore = function () {
-        Model.clearTotalScoreOfCurrentPlayer();
-        View.displayClearTotalScore(Model.currentPlayer());
     };
 
     var updateTotalScore = function () {
@@ -119,92 +241,9 @@ var DiceController = (function (Model, View) {
         View.displayNextActivePlayer(Model.currentPlayer());
     };
 
-    var ctrlRollDice = function () {
-        var dice, dices, currentScore;
-
-        if (Model.isGamePlaying()) {
-
-            if (Model.getCurrentGameMode() == Model.isGameMode().Normal) {
-
-                //1. Update the dice
-                dice = updateDice();
-
-                //2. If dice is not 1, add to currentScore and update
-                if (dice !== 1) {
-                    updateCurrentScore(dice);
-                } else { //clear currentScore and switch to next player
-                    //Disable the Roll and Hold button for 1 second to let player see the dice number 1
-                    Model.disableTheGame();
-                    setTimeout(function () {
-                        Model.activateTheGame();
-                        clearCurrentScore();
-                        ctrlHoldBtn();
-                    }, 1000);
-                }
-            } else if (Model.getCurrentGameMode() == Model.isGameMode().TwoDicePig) {
-
-                //0. Enable the Hold Button that disable from the case 4
-                if (Model.getDisplayHoldBtnStatus() == false)
-                    Model.setDisplayHoldBtnStatus(View.displayHoldbtn());
-
-                //1. Update the dice
-                dices = updateDices();
-
-                //2. if two 1s are rolled, the player's entire score is lost, and turn ends
-                if (dices[0] === 1 && dices[1] === 1) {
-                    Model.disableTheGame();
-                    setTimeout(function () {
-                        clearCurrentScore();
-                        clearTotalScore();
-                        Model.activateTheGame();
-                        ctrlHoldBtn();
-                    }, 1000);
-                }
-
-                //3. if a single 1 is rolled, the player scores nothing and turns end
-                else if (dices[0] === 1 || dices[1] === 1) {
-                    //Disable the Roll and Hold button for 1 second to let player see the dice number 1
-                    Model.disableTheGame();
-                    setTimeout(function () {
-                        clearCurrentScore();
-                        Model.activateTheGame();
-                        ctrlHoldBtn();
-                    }, 1000);
-                }
-
-                //4. If two dices are the same, score is added to total, the player has to roll again (can't hold)
-                else if (dices[0] === dices[1] && dices[0] !== 1) {
-                    //Disable the HOLD (DOWN) button
-                    Model.setDisplayHoldBtnStatus(View.hideHoldBtn());
-                    //Update the current scores with new dices
-                    updateCurrentScore(dices);
-                    //Update the Total score
-                    updateTotalScore();
-                    //Clear current score of this player
-                    clearCurrentScore();
-                }
-
-                //5. Update currentScore
-                else {
-                    updateCurrentScore(dices);
-                }
-            }
-        }
-    };
-
-    var ctrlHoldBtn = function () {
-        if (Model.isGamePlaying() && Model.getDisplayHoldBtnStatus() === true) {
-            //1. Update Total Score
-            updateTotalScore();
-            //3. Hide the dice
-            View.hideTheDice();
-            //4. if Player not yet wins the game, switch to next player and active the next UI
-            if (Model.isPlayerWinGame()) { //Set current player to be a winner, freeze the game
-                View.displayWinner(Model.currentPlayer());
-            } else { //switch to next player
-                updateNextPlayer();
-            }
-        }
+    var clearTotalScore = function () {
+        Model.clearTotalScoreOfCurrentPlayer();
+        View.displayClearTotalScore(Model.currentPlayer());
     };
 
     var updateNewFinalScore = function (newFinalScore) {
