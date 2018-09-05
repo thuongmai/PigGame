@@ -219,11 +219,13 @@ var DiceController = (function (Model, View) {
         console.log(currentScore);
         //Update the UI current
         View.displayCurrentScore(currentScore, Model.currentPlayer());
+        View.displayCurrentUpdate(dice, Model.currentPlayer());
     };
 
     var clearCurrentScore = function () {
         Model.clearCurrentScoreData();
         View.displayClearCurrentScore(Model.currentPlayer());
+        View.clearCurrentUpdateStatus();
     };
 
     var updateTotalScore = function () {

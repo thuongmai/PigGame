@@ -18,6 +18,9 @@ var DiceView = (function () {
         confirm_dialog_button: '.confirm_dialog_button',
         select_dialog: '.select_dialog',
         X_icon: '.X-icon',
+        current_update: '.current-update-',
+        current_update_1: '.current-update-0',
+        current_update_2: '.current-update-1',
         //ID
         player: 'name-',
         score: 'score-',
@@ -124,6 +127,28 @@ var DiceView = (function () {
             return true;
         },
 
+        displayCurrentUpdate: function (dice, activePlayer) {
+            var totalDice = dice;
+            this.clearCurrentUpdateStatus();
+            var obj = document.querySelector(DOMstrings.current_update + activePlayer);
+            if (dice instanceof Array)
+                totalDice = parseInt(dice[0] + dice[1]);
+
+            //Modify the position for 1 digit and 2 digits number
+            if (totalDice >= 10)
+                obj.style.transform = "translate(-11%)";
+            else
+                obj.style.transform = "translate(-7%)";
+
+            obj.textContent = "+ " + totalDice;
+            obj.style.visibility = "visible";
+        },
+
+        //Clear current update status
+        clearCurrentUpdateStatus: function () {
+            document.querySelector(DOMstrings.current_update_1).style.visibility = "hidden";
+            document.querySelector(DOMstrings.current_update_2).style.visibility = "hidden";
+        },
 
         //Clear all visiable UI
         clearAllUI: function () {
@@ -143,6 +168,7 @@ var DiceView = (function () {
             document.querySelector(DOMstrings.player2).textContent = "Player 2";
             this.hideTheDice();
             this.displayHoldbtn();
+            this.clearCurrentUpdateStatus();
 
             document.querySelector(DOMstrings.player1Panel).classList.remove(DOMstrings.winner);
             document.querySelector(DOMstrings.player2Panel).classList.remove(DOMstrings.winner);

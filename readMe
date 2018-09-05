@@ -14,7 +14,10 @@ This variation is the same as Pig, except:
 - If two 1s are rolled, the player’s entire score is lost, and the turn ends.
 - If a double is rolled, the point total is added to the turn total as with any roll but the player is obligated to roll again (possible sub-variation of the two-dice game)
 
-c) Big Pig (Not done yet)
+c) Big Pig
+This variation is the same as Two-Dice Pig, except:
+- If two 1s are rolled, the player adds 25 to the turn total.
+- If other doubles are rolled, the player adds twice the value of the dice to the turn total.
 
 d) Skunk (Not done yet)
 

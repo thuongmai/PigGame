@@ -314,6 +314,22 @@ option {
     color: forestgreen;
 }
 
+.current-update-0 {
+    font-size: 25px;
+    position: relative;
+    left: 50%;
+    transform: translate(-7%);
+    margin-top: 5px;
+}
+
+.current-update-1 {
+    font-size: 25px;
+    position: relative;
+    left: 50%;
+    transform: translate(-11%);
+    margin-top: 5px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
