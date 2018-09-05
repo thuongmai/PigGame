@@ -49,6 +49,13 @@ var DiceController = (function (Model, View) {
         //Setting button
         document.querySelector(DOM.settingBtn).addEventListener('click', function () {
             document.getElementById(DOM.settingDialog).showModal();
+            Model.disableTheGame();
+        });
+
+        //Info button
+        document.querySelector(DOM.infoBtn).addEventListener('click', function () {
+            document.getElementById(DOM.infoDialog).showModal();
+            Model.disableTheGame();
         });
 
         //Confirm Dialog button

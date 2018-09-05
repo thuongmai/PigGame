@@ -282,10 +282,14 @@ ion-icon {
 
 button:hover .setting-icon {
     color: forestgreen;
+    font-size: 30px;
+    margin-left: 5px;
 }
 
 button:hover .info-icon {
     color: forestgreen;
+    font-size: 30px;
+    margin-left: 5px;
 }
 
 #settingDialog {
@@ -297,6 +301,27 @@ button:hover .info-icon {
     margin: 10px;
     font-size: 18px;
     color: forestgreen;
+}
+
+#infoDialog {
+    left: 50%;
+    transform: translate(-50%);
+    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
+    color: forestgreen;
+    width: 700px;
+}
+
+.close_info_btn {
+    position: absolute;
+    top: 10px;
+    left: 680px;
+}
+
+button:hover .close_info_icon {
+    font-size: 36px;
+    color: darkred;
 }
 
 .confirm_dialog_button {

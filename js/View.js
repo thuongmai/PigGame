@@ -26,6 +26,7 @@ var DiceView = (function () {
         score: 'score-',
         current: 'current-',
         settingDialog: 'settingDialog',
+        infoDialog: 'infoDialog',
 
         player1: '#name-0',
         score1: '#score-0',
