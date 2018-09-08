@@ -78,6 +78,11 @@ var DiceController = (function (Model, View) {
             startNewGame();
         });
 
+        //Close info button
+        document.querySelector(DOM.closeInfoBtn).addEventListener('click', function () {
+            Model.activateTheGame();
+        });
+
     };
 
     /*****************************************************************************

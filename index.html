@@ -22,7 +22,7 @@
             <ion-icon class="final-score-icon" name="trophy"></ion-icon>
             <div class="final-score-label">100</div>
         </div>
-        
+
         <div class="player-0-panel active">
             <div class="player-name" id="name-0">Player 1</div>
             <div class="player-score" id="score-0">43</div>
@@ -64,65 +64,71 @@
 
     </div>
 
+    <div class="dialog_panel">
+        
+        <div class="setting_dialog_panel">
+            <dialog id="settingDialog">
+                <form method="dialog">
+                    <p><label>Game Mode:
+                            <select class="select_dialog">
+                                <option value="0">Normal</option>
+                                <option value="1">Two-dice pig</option>
+                                <option value="2">Big Pig</option>
+                            </select>
+                        </label></p>
+                    <menu>
+                        <button class="confirm_dialog_button">Confirm</button>
+                    </menu>
+                </form>
+            </dialog>
+        </div>
 
-    <dialog id="settingDialog">
-        <form method="dialog">
-            <p><label>Game Mode:
-                    <select class="select_dialog">
-                        <option value="0">Normal</option>
-                        <option value="1">Two-dice pig</option>
-                        <option value="2">Big Pig</option>
-                    </select>
-                </label></p>
-            <menu>
-                <button class="confirm_dialog_button">Confirm</button>
-            </menu>
-        </form>
-    </dialog>
+        <div class="info_dialog_panel">
+            <dialog id="infoDialog">
+                <form method="dialog">
+                    <div>
+                        <h3>I) GAME RULES:</h3>
+                        <menu>
+                            <button class="close_info_btn">
+                                <ion-icon class="close_info_icon" name="close-circle"></ion-icon>
+                            </button>
+                        </menu>
+                    </div>
+                    <div style="color:black;">
+                        <b>a) Mode: Normal</b><br>
+                        - The game has 2 players, playing in rounds<br>
+                        - In each turn, a player rolls a dice as many times as he whishes. Each result get added to his ROUND score.<br>
+                        - BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn.<br>
+                        - The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn.<br>
+                        - The first player to reach 100 points on GLOBAL score wins the game.<br>
+                    </div>
+                    <div style="color:black;">
+                        <b>b) Mode: Two-dice pig</b><br>
+                        This variation is the same as Pig, except:<br>
+                        - Two standard dice are rolled. If neither shows a 1, their sum is added to the turn total.<br>
+                        - If a single 1 is rolled, the player scores nothing and the turn ends.<br>
+                        - If two 1s are rolled, the player’s entire score is lost, and the turn ends.<br>
+                        - If a double is rolled, the point total is added to the turn total as with any roll but the player is obligated to roll again (possible sub-variation of the two-dice game)<br>
+                    </div>
+                    <div style="color:black;">
+                        <b>c) Big Pig</b><br>
+                        This variation is the same as Two-Dice Pig, except:<br>
+                        - If two 1s are rolled, the player adds 25 to the turn total.<br>
+                        - If other doubles are rolled, the player adds twice the value of the dice to the turn total.<br>
+                    </div>
 
-    <dialog id="infoDialog">
-        <form method="dialog">
-            <div>
-                <h3>I) GAME RULES:</h3>
-                <menu>
-                    <button class="close_info_btn">
-                        <ion-icon class="close_info_icon" name="close-circle"></ion-icon>
-                    </button>
-                </menu>
-            </div>
-            <div style="color:black;">
-                <b>a) Mode: Normal</b><br>
-                - The game has 2 players, playing in rounds<br>
-                - In each turn, a player rolls a dice as many times as he whishes. Each result get added to his ROUND score.<br>
-                - BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn.<br>
-                - The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn.<br>
-                - The first player to reach 100 points on GLOBAL score wins the game.<br>
-            </div>
-            <div style="color:black;">
-                <b>b) Mode: Two-dice pig</b><br>
-                This variation is the same as Pig, except:<br>
-                - Two standard dice are rolled. If neither shows a 1, their sum is added to the turn total.<br>
-                - If a single 1 is rolled, the player scores nothing and the turn ends.<br>
-                - If two 1s are rolled, the player’s entire score is lost, and the turn ends.<br>
-                - If a double is rolled, the point total is added to the turn total as with any roll but the player is obligated to roll again (possible sub-variation of the two-dice game)<br>
-            </div>
-            <div style="color:black;">
-                <b>c) Big Pig</b><br>
-                This variation is the same as Two-Dice Pig, except:<br>
-                - If two 1s are rolled, the player adds 25 to the turn total.<br>
-                - If other doubles are rolled, the player adds twice the value of the dice to the turn total.<br>
-            </div>
+                    <h3>II) GAMEPLAY:</h3>
 
-            <h3>II) GAMEPLAY:</h3>
-
-            <div style="color: black;">
-                - <b>SPACE BAR</b> to focus on FINAL SCORE box to change the maximum score that player can reach to win the game. Leave it empty by default will be 100<br>
-                - <b>ENTER</b> or Start button to start the new game with the input Final Score<br>
-                - <b>UP</b> or ROLL button to roll a dice/dices<br>
-                - <b>DOWN</b> or HOLD button to hold your current score, add it to Total score, then leave the turn to other player<br>
-            </div>
-        </form>
-    </dialog>
+                    <div style="color: black;">
+                        - <b>SPACE BAR</b> to focus on FINAL SCORE box to change the maximum score that player can reach to win the game. Leave it empty by default will be 100<br>
+                        - <b>ENTER</b> or Start button to start the new game with the input Final Score<br>
+                        - <b>UP</b> or ROLL button to roll a dice/dices<br>
+                        - <b>DOWN</b> or HOLD button to hold your current score, add it to Total score, then leave the turn to other player<br>
+                    </div>
+                </form>
+            </dialog>
+        </div>
+    </div>
 
     <script src="js/Model.js"></script>
     <script src="js/View.js"></script>

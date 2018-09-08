@@ -116,6 +116,10 @@ body {
     font-weight: bold;
 }
 
+/**********************************************
+*** BUTTON
+**********************************************/
+
 button {
     position: absolute;
     width: 200px;
@@ -152,17 +156,6 @@ button:focus {
     outline: none;
 }
 
-ion-icon {
-    color: forestgreen;
-    display: inline-block;
-    margin-right: 15px;
-    font-size: 32px;
-    line-height: 1;
-    vertical-align: text-top;
-    margin-top: -4px;
-    transition: margin 0.3s;
-}
-
 .btn-new {
     top: 55px;
 }
@@ -175,6 +168,48 @@ ion-icon {
     top: 467px;
 }
 
+.btn-setting {
+    top: 5%;
+    left: 3%;
+    transform: translate(-55%, 25%);
+    color: darkred;
+    text-transform: uppercase;
+}
+
+.btn-info {
+    top: 10%;
+    left: 3%;
+    transform: translate(-55%, 25%);
+    color: darkred;
+    text-transform: uppercase;
+}
+
+button:hover .setting-icon {
+    color: forestgreen;
+    font-size: 30px;
+    margin-left: 5px;
+}
+
+button:hover .info-icon {
+    color: forestgreen;
+    font-size: 30px;
+    margin-left: 5px;
+}
+
+/**********************************************
+*** ICON
+**********************************************/
+ion-icon {
+    color: forestgreen;
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 32px;
+    line-height: 1;
+    vertical-align: text-top;
+    margin-top: -4px;
+    transition: margin 0.3s;
+}
+
 .X-icon {
     position: absolute;
     top: 467px;
@@ -182,6 +217,27 @@ ion-icon {
     transform: translate(-35%);
 }
 
+.final-score-icon {
+    position: absolute;
+    top: 6px;
+    color: darkred;
+    font-size: 24px;
+}
+
+.setting-icon {
+    font-size: 24px;
+    color: darkred;
+}
+
+.info-icon {
+    font-size: 24px;
+    color: darkred;
+}
+
+
+/**********************************************
+*** DICE
+**********************************************/
 .dice {
     position: absolute;
     left: 50%;
@@ -238,28 +294,6 @@ ion-icon {
     outline: none;
 }
 
-.btn-setting {
-    top: 5%;
-    left: 3%;
-    transform: translate(-55%, 25%);
-    color: darkred;
-    text-transform: uppercase;
-}
-
-.btn-info {
-    top: 10%;
-    left: 3%;
-    transform: translate(-55%, 25%);
-    color: darkred;
-    text-transform: uppercase;
-}
-
-.final-score-icon {
-    position: absolute;
-    top: 6px;
-    color: darkred;
-    font-size: 24px;
-}
 
 .final-score-label {
     font-size: 22px;
@@ -268,28 +302,6 @@ ion-icon {
     background: none;
     position: absolute;
     left: 25px;
-}
-
-.setting-icon {
-    font-size: 24px;
-    color: darkred;
-}
-
-.info-icon {
-    font-size: 24px;
-    color: darkred;
-}
-
-button:hover .setting-icon {
-    color: forestgreen;
-    font-size: 30px;
-    margin-left: 5px;
-}
-
-button:hover .info-icon {
-    color: forestgreen;
-    font-size: 30px;
-    margin-left: 5px;
 }
 
 #settingDialog {

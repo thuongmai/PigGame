@@ -21,6 +21,7 @@ var DiceView = (function () {
         current_update: '.current-update-',
         current_update_1: '.current-update-0',
         current_update_2: '.current-update-1',
+        closeInfoBtn: '.close_info_btn',
         //ID
         player: 'name-',
         score: 'score-',
