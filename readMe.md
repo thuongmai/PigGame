@@ -7,14 +7,14 @@
 - The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn
 - The first player to reach 100 points on GLOBAL score wins the game
 
-**b) Two-dice pig**
+**b) Two-dice pig**  
 This variation is the same as Pig, except:
 - Two standard dice are rolled. If neither shows a 1, their sum is added to the turn total.
 - If a single 1 is rolled, the player scores nothing and the turn ends.
 - If two 1s are rolled, the player’s entire score is lost, and the turn ends.
 - If a double is rolled, the point total is added to the turn total as with any roll but the player is obligated to roll again (possible sub-variation of the two-dice game)
 
-**c) Big Pig**
+**c) Big Pig**  
 This variation is the same as Two-Dice Pig, except:
 - If two 1s are rolled, the player adds 25 to the turn total.
 - If other doubles are rolled, the player adds twice the value of the dice to the turn total.
