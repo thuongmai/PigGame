@@ -170,7 +170,7 @@ button:focus {
 
 .btn-setting {
     top: 5%;
-    left: 3%;
+    left: 1.5%;
     transform: translate(-55%, 25%);
     color: darkred;
     text-transform: uppercase;
@@ -178,7 +178,7 @@ button:focus {
 
 .btn-info {
     top: 10%;
-    left: 3%;
+    left: 1.5%;
     transform: translate(-55%, 25%);
     color: darkred;
     text-transform: uppercase;
@@ -328,7 +328,7 @@ ion-icon {
 .close_info_btn {
     position: absolute;
     top: 10px;
-    left: 680px;
+    left: 670px;
 }
 
 button:hover .close_info_icon {
