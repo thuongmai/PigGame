@@ -1,4 +1,4 @@
-I) GAME RULES:
+## I) GAME RULES:
 
 a) Normal
 - The game has 2 players, playing in rounds
@@ -19,9 +19,11 @@ This variation is the same as Two-Dice Pig, except:
 - If two 1s are rolled, the player adds 25 to the turn total.
 - If other doubles are rolled, the player adds twice the value of the dice to the turn total.
 
-II) GAMEPLAY:
+## II) GAMEPLAY:
 
 - 'SPACE BAR' to focus on FINAL SCORE box to change the maximum score that player can reach to win the game. Leave it empty by default will be 100
 - 'ENTER' or Start button to start the new game with the input Final Score
 - 'UP' or ROLL button to roll a dice/dices
 - 'DOWN'or HOLD button to hold your current score, add it to Total score, then leave the turn to other player
+
+![Main Menu](https://raw.githubusercontent.com/thuongmai/PigGame/master/img/screenShot1.png)
