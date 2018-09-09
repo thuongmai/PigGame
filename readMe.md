@@ -25,5 +25,3 @@ This variation is the same as Two-Dice Pig, except:
 - **ENTER** or **Start** button to start the new game with the input Final Score
 - **UP** or **ROLL** button to roll a dice/dices
 - **DOWN** or **HOLD** button to hold your current score, add it to Total score, then leave the turn to other player
-
-![Main Menu](https://raw.githubusercontent.com/thuongmai/PigGame/master/img/screenShot1.png)
