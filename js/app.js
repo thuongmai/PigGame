@@ -136,6 +136,8 @@ var DiceController = (function (Model, View) {
         } else { //clear currentScore and switch to next player
             //Disable the Roll and Hold button for 1 second to let player see the dice number 1
             Model.disableTheGame();
+            View.clearCurrentUpdateStatus();
+            View.displayCurrentScore("Failed", Model.currentPlayer());
             setTimeout(function () {
                 Model.activateTheGame();
                 clearCurrentScore();
@@ -157,6 +159,8 @@ var DiceController = (function (Model, View) {
         if (dices[0] === 1 && dices[1] === 1) {
             if (!isBigPig) {
                 Model.disableTheGame();
+                View.clearCurrentUpdateStatus();
+                View.displayCurrentScore("Double Failed", Model.currentPlayer());
                 setTimeout(function () {
                     clearCurrentScore();
                     clearTotalScore();
@@ -172,6 +176,8 @@ var DiceController = (function (Model, View) {
         else if (dices[0] === 1 || dices[1] === 1) {
             //Disable the Roll and Hold button for 1 second to let player see the dice number 1
             Model.disableTheGame();
+            View.clearCurrentUpdateStatus();
+            View.displayCurrentScore("Failed", Model.currentPlayer());
             setTimeout(function () {
                 clearCurrentScore();
                 Model.activateTheGame();
@@ -228,7 +234,7 @@ var DiceController = (function (Model, View) {
         var currentScore;
         //Add dice number to current score
         currentScore = Model.addScoreToCurrent(dice);
-        console.log(currentScore);
+        //console.log(currentScore);
         //Update the UI current
         View.displayCurrentScore(currentScore, Model.currentPlayer());
         View.displayCurrentUpdate(dice, Model.currentPlayer());

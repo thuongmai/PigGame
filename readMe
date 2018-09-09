@@ -19,8 +19,6 @@ This variation is the same as Two-Dice Pig, except:
 - If two 1s are rolled, the player adds 25 to the turn total.
 - If other doubles are rolled, the player adds twice the value of the dice to the turn total.
 
-d) Skunk (Not done yet)
-
 II) GAMEPLAY:
 
 - 'SPACE BAR' to focus on FINAL SCORE box to change the maximum score that player can reach to win the game. Leave it empty by default will be 100
